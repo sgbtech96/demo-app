@@ -35,13 +35,19 @@ export class FileUploadComponent implements OnInit {
 
   submitForm() {
     var formData: any = new FormData();
-    var obj = {"name": this.form.get('name').value, "password": this.form.get('password').value}
-    formData.append("name", this.form.get('name').value);
-    formData.append("password", this.form.get('password').value);
-    formData.append("avatar", this.form.get('avatar').value);
+    var obj = {
+      name: "",
+      password: "",
+      level: 1 
+    }
+    obj.name = this.form.get('name').value
+    obj.password = this.form.get('password').value
+    // formData.append("name", this.form.get('name').value);
+    // formData.append("password", this.form.get('password').value);
+    // formData.append("avatar", this.form.get('avatar').value);
     console.log(obj);
 
-    this.http.post('http://localhost:4000/api/create-user', obj).subscribe(
+    this.http.post('https://education4all.herokuapp.com/login', obj).subscribe(
       (response) => console.log(response),
       (error) => console.log(error)
     )
